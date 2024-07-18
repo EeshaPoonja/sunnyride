@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { useState } from 'react';
+import { StyleSheet, TextInput, View,Text,Button} from 'react-native';
+import Subapp from './subapp';
+import FrontScreen from './Frontscreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+import Instruscreen from './instructions';
+import { LinearGradient } from 'expo-linear-gradient';
+
+export default function App(){
+
+  const [screen,setscreen]=useState('0');
+  
+  return(
+   
+
+    <LinearGradient colors={['#FFF9D0','#CAF4FF','#A0DEFF','#5AB2FF']} style={styles.linearGradient}>
+          {console.log(screen)}
+    {screen==='0' &&<FrontScreen setscreen={setscreen} />}
+    {console.log(screen)}
+    {screen==='1' && <Instruscreen setscreen={setscreen} />}
+   {screen==='2' && <Subapp />}
+   
+   
+    </LinearGradient>
+  
   );
+
 }
 
 const styles = StyleSheet.create({
+  linearGradient: {
+    flex: 1,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  
+  }
 });
